@@ -1,4 +1,4 @@
-﻿package com.fbzj.track.util.geo;
+package com.fbzj.track.util.geo;
 
 import java.util.Date;
 

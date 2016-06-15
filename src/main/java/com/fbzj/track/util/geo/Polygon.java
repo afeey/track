@@ -1,4 +1,4 @@
-﻿package com.fbzj.track.util.geo;
+package com.fbzj.track.util.geo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +21,14 @@ public class Polygon {
 	 */
 	public Polygon() {
 		this.points = new ArrayList<Point>();
+	}
+	
+	/**
+	 * 构造函数
+	 * @param points 坐标点列表
+	 */
+	public Polygon(List<Point> points) {
+		this.points = points;
 	}
 
 	public List<Point> getPoints() {
