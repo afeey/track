@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.6 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>汽车在线页面API-使用帮助文档</title>
+<style type="text/css">
+html,body{margin:0;padding:0;font-family:'microsoft yahei',Tahoma, Verdana, sans-serif, simsun;font-size:13px;color:#505050;}
+h1,h2,h3,ul,li{margin:0;padding:0;}
+p{margin:0 0 10px;line-height:2;}
+#hd{background:#3D485A;height:65px;}
+.header{width:900px;margin:0 auto;}
+.header h1{padding:20px 0 0;font:bold 18px 'microsoft yahei','黑体','宋体';color:#E06329;}
+.warn{color:#f00;}
+
+#bd{width:900px;margin:20px auto;background:#F0F5F8;padding:10px;}
+#ft{background:#3D485A;padding:10px;text-align:center;color:#eee;}
+.wrap{margin:0 0 10px;border:1px solid #CDE1EF;background:#fff;}
+.wrap-contact{margin:0;padding:10px 10px 10px 25px;}
+.block{padding:10px;}
+.block .hd{padding:0 0 3px 15px;border-bottom:1px solid #CEE1EE;}
+.block h3{padding:6px 0;color:#336699;font-size:16px;}
+.block h4{font-size:14px;}
+.block h5{font-size:13px;}
+.block .bd{padding:6px 0 0 15px;}
+.block .bd strong{color:#000;font-weight:normal;}
+.block .ft .imgMain{padding:10px 0 0;text-align:center;}
+.block .ft ul{height:30px;margin:0 0 0 250px;}
+.block .ft li{float:left;margin:0 50px 0 20px;}
+.block ul{margin:0 0 0 30px;}
+ul.index{line-height:1.8;}
+</style>
+</head>
+
+<body>
+<div id="hd">
+	<div class="header">
+		<h1>汽车在线OPEN API文档</h1>
+	</div>
+</div>
+<div id="bd">
+	<div class="wrap">
+		<div class="block">
+			<div class="hd"><h3>简 介</h3></div>
+			<div class="bd">
+				汽车在线API是汽车在线平台推出的服务开放接口，任何第三方应用或网站都可以通过使用开放API为用户提供实时优质的服务。 <br>
+				所有的API都是基于REST基础的接口规范，可兼容多种编程语言。
+			</div>
+		</div>
+		<div class="block">
+			<div class="hd"><h3>目 录</h3></div>
+			<div class="bd">
+				<ul class="index">
+					<li><a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-1">一 OpenAPI使用场景</a></li>
+					<li><a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-2">二 使用方法</a></li>
+					<li><a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3">三 API相关</a></li>
+					<li><a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.1">1 通用参数</a></li>
+					<li><a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.2">2 参数编码</a></li>
+					<li><a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.3">3 HTTP MIME类型</a></li>
+					<li><a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.4">4 接口说明</a></li>
+					<li><a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.4.1">4.1【获取accesstoken】</a></li>
+					<li><a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.4.2">4.2【监控】monitor</a></li>
+					<li><a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.4.3">4.3【跟踪】tracking</a></li>
+					<li><a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.4.4">4.4【历史轨迹】history</a></li>
+					<li><a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.4.5">4.5【逆地理位置解析】</a></li>
+                    <li><a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.4.6">4.6【获取设备信息】</a></li>
+                    <li><a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.4.7">4.7【黑名单判断】</a></li>
+					<li><a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.5">5 错误码说明</a></li>
+					<li><a href="./汽车在线页面API-使用帮助文档_files/汽车在线页面API-使用帮助文档.html">6 访问限制说明</a></li>
+					<li><a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.6.1">6.1 访问频率</a></li>
+					<li><a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.6.2">6.2 access_token的有效期</a></li>
+					<li><a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.7">7 名词解释</a></li>
+					<li><a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.7.1">7.1 位置数据的几个时间</a></li>
+					<li><a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.7.2">7.2 终端设备的状态</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="block" id="block-1">
+			<div class="hd"><h3>一 OpenAPI使用场景</h3></div>
+			<div class="bd">
+				<p>
+				1.经销商自己有一套系统，想在这个基础上扩充相关GPS功能。<br>
+				2.经销商的客户的账号由经销商自己的系统管理，用于登录经销商的系统。
+  					经销商系统的账号和汽车在线平台的账号对应关系，经销商自己管理，经销商使用汽车在线平台的账号来获取相应设备数据。<br>
+ 					设备IMEI由经销商自己的系统管理，经销商可根据imei获取设备数据。<br>
+				3.经销商的应用服务器调用API接口。
+				</p>
+			</div>
+		</div>
+		<div class="block" id="block-2">
+			<div class="hd"><h3>二 使用方法</h3></div>
+			<div class="bd">
+				<p>
+				经销商提供他的汽车在线平台登陆账号和密码来获取调用api接口访问令牌(access_token)。<br>
+				经销商在应用服务器端使用该access_token访问OPEN API接口获取所需的数据。
+				</p>
+				<p>
+				数据交互流程图如下：<br>
+				<img src="./汽车在线页面API-使用帮助文档_files/data-flow.jpg" alt="数据交互流程图">
+				</p>
+			</div>
+		</div>
+		<div class="block" id="block-3">
+			<div class="hd"><h3>三 API相关</h3></div>
+		</div>
+		<div class="block" id="block-3.1">
+			<div class="hd"><h4>1 通用参数</h4></div>
+			<div class="bd">
+				<p>
+					</p><table border="1">
+						<tbody><tr>
+							<th>参数名</th>
+							<th>参数类型</th>
+							<th>是否必需</th>
+							<th>描述</th>
+						</tr>
+						<tr>
+							<th>access_token</th>
+							<td>string</td>
+							<td>是</td>
+							<td>访问令牌，表明其是一个合法第三方，调用汽车在线的任何Restful Open API。获取方法请参考4.1。<span class="warn">请勿在服务端代码以外的地方使用该access_token</span></td>
+						</tr>
+						<tr>
+							<th>account</th>
+							<td>string</td>
+							<td>是</td>
+							<td>您申请appkey时所用的汽车在线的登录账号</td>
+						</tr>
+						<tr>
+							<th>format</th>
+							<td>string</td>
+							<td>否</td>
+							<td>默认json(暂时只支持JSON)</td>
+						</tr>
+						<tr>
+							<th>time</th>
+							<td>number</td>
+							<td>是</td>
+							<td>UNIX时间戳，10位，精确到秒。一般是发请求时的时间。</td>
+						</tr>
+						<tr>
+							<th>callback</th>
+							<td>string</td>
+							<td>否</td>
+							<td>第三方通过JS调用Open API时可以通过指定callback参数来要求平台端返回JSONP代码，以解决跨域问题。callback参数值只能是 字母 数字 下划线。</td>
+						</tr>
+					</tbody></table>
+				<p></p>
+			</div>
+		</div>
+		<div class="block" id="block-3.2">
+			<div class="hd"><h4>2 参数编码</h4></div>
+			<div class="bd">
+				<p>
+				所有的请求和响应数据编码皆为utf-8格式，url里的所有参数值请做URIEncode编码；<br>
+				各个参数请进行URL 编码(UTF-8)，编码时请遵守 <a href="http://tools.ietf.org/html/rfc1738">RFC 1738</a>。
+				</p>
+			</div>
+		</div>
+		<div class="block" id="block-3.3">
+			<div class="hd"><h4>3 HTTP MIME类型</h4></div>
+			<div class="bd">
+				<p>
+					JSON<br>
+	 					Content-type: text/html; charset=utf-8<br> 
+					JSONP<br>
+	 					Content-type: text/javascript; charset=utf-8<br> 
+				</p>
+			</div>
+		</div>
+		<div class="block" id="block-3.4">
+			<div class="hd"><h4>4 接口说明</h4></div>
+		</div>
+		<div class="block" id="block-3.4.1">
+			<div class="hd"><h5>4.1【获取accesstoken】</h5></div>
+			<div class="bd">
+				<p>
+				接口说明：<br>获取一个访问。
+				</p>
+				<p>
+				URL：<br>http://api.gpsoo.net/1/auth/access_token?
+				</p>
+				<p>
+				HTTP请求方式：<br>GET/POST
+				</p>
+				<p>
+				输入参数说明：
+				</p><table border="1">
+					<tbody><tr>
+						<th>参数名</th>
+						<th>参数类型</th>
+						<th>是否必需</th>
+						<th>默认值</th>
+						<th>描述</th>
+					</tr>
+					<tr>
+						<th>account</th>
+						<td>string</td>
+						<td>是</td>
+						<td>无</td>
+						<td>经销商的账号</td>
+					</tr>
+					<tr>
+						<th>time</th>
+						<td>number</td>
+						<td>是</td>
+						<td>无</td>
+						<td>UNIX时间戳，10位，精确到秒</td>
+					</tr>
+					<tr>
+						<th>signature</th>
+						<td>string</td>
+						<td>是</td>
+						<td>无</td>
+						<td>加密的签名，算法为:md5(md5(经销商账号的密码) + time)
+						</td>
+					</tr>
+				</tbody></table>
+				<p></p>
+				<p>
+				请求示例：<br>
+				http://api.gpsoo.net/1/auth/access_token?account=testacc&amp;time=1366786321&amp;signature=e9b39daacc811af7109ef1e11a6583bd
+				</p>
+				<p>
+				返回参数说明：
+				</p><table border="1">
+					<tbody><tr>
+						<th>参数名</th>
+						<th>参数类型</th>
+						<th>描述</th>
+					</tr>
+					<tr>
+						<th>ret</th>
+						<td>uint</td>
+						<td>返回码：<br>
+							0: 正确返回<br>
+							其它: 失败。<a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.5">错误码说明</a>
+						</td>
+					</tr>
+					<tr>
+						<th>msg</th>
+						<td>string</td>
+						<td>如果ret不为0，会有相应的错误信息提示</td>
+					</tr>
+					<tr>
+						<th>access_token</th>
+						<td>string</td>
+						<td>后续接口访问的访问令牌
+						</td>
+					</tr>
+					<tr>
+						<th>expires_in</th>
+						<td>number</td>
+						<td>access token的有效期，以秒为单位</td>
+					</tr>
+				</tbody></table>
+				<p></p>
+				<p>
+				正确返回示例：
+</p><pre>{
+"ret":0,
+"msg":"",
+"access_token"：" 13667863217ac80dbbaaf3c74cec21f6d6867bff43",
+"expires_in":7200
+}
+</pre>
+				<p></p>
+				<p>
+				错误返回示例：
+</p><pre>{"ret":20001,"msg":"账号或密码错误"}
+</pre>
+				<p></p>
+				<p>
+				特别说明：<br>
+				(1) <span class="warn">请勿在服务端代码以外的地方使用该access_token</span><br>
+				(2) 调用接口的时候返回10006 (access_token已过期) 错误，就需要重新请求access_token
+				</p>
+			</div>
+		</div>
+		<div class="block" id="block-3.4.2">
+			<div class="hd"><h5>4.2【监控】monitor</h5></div>
+			<div class="bd">
+				<p>
+				接口说明：<br>获取一个账户名下所有设备最新位置信息
+				</p>
+				<p>
+				URL：<br>http://api.gpsoo.net/1/account/monitor
+				</p>
+				<p>
+				HTTP请求方式：<br>GET/POST
+				</p>
+				<p>
+				输入参数说明：<br>
+				（1）通用参数<br>
+    		 	  	  参见：<a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.1">通用参数</a><br>
+				（2）私有参数
+				</p><table border="1">
+					<tbody><tr>
+						<th>参数名</th>
+						<th>参数类型</th>
+						<th>是否必需</th>
+						<th>默认值</th>
+						<th>描述</th>
+					</tr>
+					<tr>
+						<th>target</th>
+						<td>string</td>
+						<td>是</td>
+						<td>无</td>
+						<td>要监控的账户(在汽车在线平台的账号)，目标账号名下最多只能有100个设备</td>
+					</tr>
+					<tr>
+						<th>map_type</th>
+						<td>string</td>
+						<td>否</td>
+						<td>无</td>
+						<td>如果要显示在百度地图上，map_type=BAIDU此时返回的经纬度将经过baidu校准方式校准<br>
+							如果要显示在google地图上，map_type=GOOGLE，此时返回的经纬度将经过google校准方式校准<br>
+							map_type如果不填，则返回原始经纬度
+						</td>
+					</tr>
+				</tbody></table>
+				<p></p>
+				<p>
+				请求示例：<br>
+				http://api.gpsoo.net/1/account/monitor?access_token=0011045701369822736adb020814946df1ded1c8681d026d5c5&amp;map_type=BAIDU&amp;target=mycar&amp;account=testacc&amp;time= 1366786321
+				</p>
+				<p>
+				返回参数说明：
+				</p><table border="1">
+					<tbody><tr>
+						<th>参数名</th>
+						<th>参数类型</th>
+						<th>描述</th>
+					</tr>
+					<tr>
+						<th>ret</th>
+						<td>uint</td>
+						<td>返回码<br>
+							0: 正确返回<br>
+							其它: 失败。<a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.5">错误码说明</a>
+						</td>
+					</tr>
+					<tr>
+						<th>msg</th>
+						<td>string</td>
+						<td>如果ret不为0，会有相应的错误信息提示</td>
+					</tr>
+					<tr>
+						<th>imei</th>
+						<td>string</td>
+						<td>设备IMEI</td>
+					</tr>
+					<tr>
+						<th>device_info</th>
+						<td>uint</td>
+						<td>0:正常数据 1:设备未上线 2:设备已过期 3:设备离线</td>
+					</tr>
+					<tr>
+						<th>gps_time</th>
+						<td>number</td>
+						<td>定位时间 GPS定位时间 UTC秒数(如果设备过期，值为0)
+						</td>
+					</tr>
+					<tr>
+						<th>sys_ime</th>
+						<td>number</td>
+						<td>Gps数据的系统时间 UTC秒数(如果设备过期，值为0)
+						</td>
+					</tr>
+					<tr>
+						<th>heart_time</th>
+						<td>number</td>
+						<td>心跳时间 UTC秒数(如果设备过期，值为0)
+						</td>
+					</tr>
+					<tr>
+						<th>server_time</th>
+						<td>number</td>
+						<td>当前服务器时间 UTC秒数(如果设备过期，值为0)</td>
+					</tr>
+					<tr>
+						<th>lng</th>
+						<td>number</td>
+						<td>经度 (如果设备过期，值为0)
+						</td>
+					</tr>
+					<tr>
+						<th>lat</th>
+						<td>number</td>
+						<td>纬度 (如果设备过期，值为0)
+						</td>
+					</tr>
+					<tr>
+						<th>course</th>
+						<td>number</td>
+						<td>航向(正北方向为0度，顺时针方向增大。最大值360度)<br>(如果设备过期，值为0)
+						</td>
+					</tr>
+					<tr>
+						<th>speed</th>
+						<td>number</td>
+						<td>速度 (单位:km/h)<br>(如果设备过期，值为-1)</td>
+					</tr>
+					<tr>
+						<th>status</th>
+						<td>string</td>
+						<td>ACC等信息 (如果设备过期，值为空字符串)
+						</td>
+					</tr>		
+				</tbody></table>
+				<p></p>
+				<p>
+				正确返回示例：
+</p><pre>{ 
+"ret":0,
+"msg":"",
+"data"： [{
+	"imei": "353419031939627",
+	"device_info":0,
+	"gps_time": 1318409927,
+	"sys_time": 1318409919,
+	"heart_time": 1318409919,
+	"server_time": 1318428292,
+	"lng": 113.91919,
+	"lat": 22.54546,
+	"course": 100,
+	"speed": 80},
+	{ 
+	"imei": "353419032982170",
+	"device_info":0,
+	"gps_time": 1318409927,
+	"sys_time": 1318409919,
+	"heart_time": 1318409919,
+	"server_time": 1318428292,
+	"lng": 113.91919,
+	"lat": 22.54546,
+	"course": 100,
+	"speed": 80}]
+}
+</pre>
+				<p></p>
+				<p>
+				错误返回示例：
+</p><pre>{"ret":20005,"msg":"无权查看该账号信息(mycar)"}
+</pre>
+				<p></p>
+			</div>
+		</div>
+		<div class="block" id="block-3.4.3">
+			<div class="hd"><h5>4.3【跟踪】tracking</h5></div>
+			<div class="bd">
+				<p>
+				接口说明：<br>获取单个/批量设备最新位置信息
+				</p>
+				<p>
+				URL：<br>http://api.gpsoo.net/1/devices/tracking
+				</p>
+				<p>
+				HTTP请求方式：<br>GET/POST
+				</p>
+				<p>
+				输入参数说明：<br>
+				（1）通用参数<br>
+    		 	  	  参见：<a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.1">通用参数</a><br>
+				（2）私有参数
+				</p><table border="1">
+					<tbody><tr>
+						<th>参数名</th>
+						<th>参数类型</th>
+						<th>是否必需</th>
+						<th>默认值</th>
+						<th>描述</th>
+					</tr>
+					<tr>
+						<th>imeis</th>
+						<td>string</td>
+						<td>是</td>
+						<td>无</td>
+						<td>设备imei号，多个中间用英文逗号隔开； 如果设备过多，建议采用POST方式(一次最多100个IMEI)</td>
+					</tr>
+					<tr>
+						<th>map_type</th>
+						<td>string</td>
+						<td>否</td>
+						<td>无</td>
+						<td>如果要显示在百度地图上，map_type=BAIDU此时返回的经纬度将经过baidu校准方式校准<br>
+							如果要显示在google地图上，map_type=GOOGLE，此时返回的经纬度将经过google校准方式校准<br>
+							map_type如果不填，则返回原始经纬度
+						</td>
+					</tr>
+				</tbody></table>
+				<p></p>
+				<p>
+				请求示例：<br>
+				http://api.gpsoo.net/1/devices/tracking?access_token=0011045701369822736adb020814946df1ded1c8681d026d5c5&amp;map_type=BAIDU
+                    &amp;account=testacc&amp;imeis=353419031939627,353419032982170&amp;time=1366786321
+				</p>
+				<p>
+				返回参数说明：
+				</p><table border="1">
+					<tbody><tr>
+						<th>参数名</th>
+						<th>参数类型</th>
+						<th>描述</th>
+					</tr>
+					<tr>
+						<th>ret</th>
+						<td>uint</td>
+						<td>返回码<br>
+							0: 正确返回<br>
+							其它: 失败。<a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.5">错误码说明</a>
+						</td>
+					</tr>
+					<tr>
+						<th>msg</th>
+						<td>string</td>
+						<td>如果ret不为0，会有相应的错误信息提示</td>
+					</tr>
+					<tr>
+						<th>imei</th>
+						<td>string</td>
+						<td>设备imei</td>
+					</tr>
+					<tr>
+						<th>device_info</th>
+						<td>uint</td>
+						<td>0:正常数据 1:设备未上线 2:设备已过期 3:设备离线</td>
+					</tr>
+					<tr>
+						<th>gps_time</th>
+						<td>number</td>
+						<td>定位时间 GPS定位时间 UTC秒数(如果设备过期，值为0)
+						</td>
+					</tr>
+					<tr>
+						<th>sys_time</th>
+						<td>number</td>
+						<td>系统时间 UTC秒数(如果设备过期，值为0)
+						</td>
+					</tr>
+					<tr>
+						<th>heart_time</th>
+						<td>number</td>
+						<td>心跳时间 UTC秒数(如果设备过期，值为0)
+						</td>
+					</tr>
+					<tr>
+						<th>server_time</th>
+						<td>number</td>
+						<td>当前服务器时间 UTC秒数(如果设备过期，值为0)
+						</td>
+					</tr>
+					<tr>
+						<th>lng</th>
+						<td>number</td>
+						<td>经度 (如果设备过期，值为0)
+						</td>
+					</tr>
+					<tr>
+						<th>lat</th>
+						<td>number</td>
+						<td>纬度 (如果设备过期，值为0)
+						</td>
+					</tr>
+					<tr>
+						<th>course</th>
+						<td>number</td>
+						<td>航向(正北方向为0度，顺时针方向增大。最大值360度)<br>
+							(如果设备过期，值为0)
+						</td>
+					</tr>
+					<tr>
+						<th>speed</th>
+						<td>number</td>
+						<td>速度 (单位:km/h)<br>
+							(如果设备过期，值为-1，如果设备还未上线值为-9)
+						</td>
+					</tr>
+					<tr>
+						<th>status</th>
+						<td>string</td>
+						<td>ACC等信息 (如果设备过期，值为空字符串)
+						</td>
+					</tr>
+				</tbody></table>
+				<p></p>
+				<p>
+				正确返回示例：
+</p><pre>{ 
+"ret":0,
+"msg":"",
+"data"： [{
+	"imei": "353419031939627",
+	"device_info":0,
+	"gps_time": 1318409927,
+	"sys_time": 1318409919,
+	"heart_time": 1318409919,
+	"server_time": 1318428292,
+	"lng": 113.91919,
+	"lat": 22.54546,
+	"course": 100,
+	"speed": 80"},
+	{ 
+	"imei": "353419032982170",
+	"device_info":0,
+	"gps_time": 1318409927,
+	"gps_time": 1318409919,
+	"heart_time": 1318409919,
+	"server_time": 1318428292,
+	"lng": 113.91919,
+	"lat": 22.54546,
+	"course": 100,
+	"speed": 80}]
+}
+</pre>
+				<p></p>
+				<p>
+				错误返回示例：
+</p><pre>{"ret":20007,"msg":"IMEI不存在(353419031939627)"}
+</pre>
+				<p></p>
+			</div>
+		</div>
+		<div class="block" id="block-3.4.4">
+			<div class="hd"><h5>4.4【历史轨迹】history</h5></div>
+			<div class="bd">
+				<p>
+					接口说明：<br>获取设备历史轨迹位置信息
+					</p>
+					<p>
+					URL：<br>http://api.gpsoo.net/1/devices/history
+					</p>
+					<p>
+					HTTP请求方式：<br>GET
+					</p>
+					<p>
+					输入参数说明：<br>
+					（1）通用参数<br>
+	    		 	  	  参见：<a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.1">通用参数</a><br>
+					（2）私有参数
+					</p><table border="1">
+						<tbody><tr>
+							<th>参数名</th>
+							<th>参数类型</th>
+							<th>是否必需</th>
+							<th>默认值</th>
+							<th>描述</th>
+						</tr>
+						<tr>
+							<th>imei</th>
+							<td>string</td>
+							<td>是</td>
+							<td>无</td>
+							<td>设备imei(一次只能一个IMEI)</td>
+						</tr>
+						<tr>
+							<th>map_type</th>
+							<td>string</td>
+							<td>否</td>
+							<td>无</td>
+							<td>如果要显示在百度地图上，map_type=BAIDU此时返回的经纬度将经过baidu校准方式校准<br>
+								如果要显示在google地图上，map_type=GOOGLE，此时返回的经纬度将经过google校准方式校准<br>
+								map_type如果不填/其他值，则返回原始经纬度
+							</td>
+						</tr>
+						<tr>
+							<th>begin_time</th>
+							<td>number</td>
+							<td>是</td>
+							<td>无</td>
+							<td>开始时间(UTC) 秒数</td>
+						</tr>
+						<tr>
+							<th>end_time</th>
+							<td>number</td>
+							<td>是</td>
+							<td>无</td>
+							<td>结束时间(UTC) 秒数。end_time不应大于当前时间。</td>
+						</tr>
+						<tr>
+							<th>limit</th>
+							<td>number</td>
+							<td>否</td>
+							<td>1000</td>
+							<td>每次请求数据数量(一次最大1000条)</td>
+						</tr>
+					    <tr>
+						    <th>time</th>
+						    <td>number</td>
+						    <td>是</td>
+						    <td>无</td>
+						    <td>UNIX时间戳。如果请求较长的时间段，如果点数很多的话，需要多次发请求获取，每次请求的begin_time很end_time参数保持和第一次的一样，time参数传上一次请求返回里最后一个点的gps_time。</td>
+					    </tr>
+					</tbody></table>
+					<p></p>
+					<p>
+					请求示例：<br>
+					http://api.gpsoo.net/1/devices/history?access_token=0011045701369822736adb020814946df1ded1c8681d026d5c5&amp;map_type=BAIDU
+                        &amp;account=testacc&amp;imei=353419031939627&amp;time=1366786321&amp;begin_time=1452754256&amp;end_time=14527547562
+					</p>
+					<p>
+					返回参数说明：
+					</p><table border="1">
+						<tbody><tr>
+							<th>参数名</th>
+							<th>参数类型</th>
+							<th>描述</th>
+						</tr>
+						<tr>
+							<th>ret</th>
+							<td>uint</td>
+							<td>返回码<br>
+								0: 正确返回<br>
+								其它: 失败。<a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.5">错误码说明</a>
+							</td>
+						</tr>
+						<tr>
+							<th>msg</th>
+							<td>string</td>
+							<td>如果ret不为0，会有相应的错误信息提示</td>
+						</tr>
+						<tr>
+							<th>gps_time</th>
+							<td>number</td>
+							<td>gps定位时间  UTC秒数</td>
+						</tr>
+						<tr>
+							<th>lng</th>
+							<td>number</td>
+							<td>经度</td>
+						</tr>
+						<tr>
+							<th>lat</th>
+							<td>number</td>
+							<td>纬度</td>
+						</tr>
+						<tr>
+							<th>course</th>
+							<td>number</td>
+							<td>航向(正北方向为0度，顺时针方向增大。最大值360度)</td>
+						</tr>
+						<tr>
+							<th>speed</th>
+							<td>number</td>
+							<td>速度 (单位: km/h)</td>
+						</tr>
+					</tbody></table>
+					<p></p>
+					<p>
+					正确返回示例：
+</p><pre>{
+"ret":0,
+"msg":"",
+"data":[{
+	"gps_time": 1318409927,
+	"lng": 113.91919,
+	"lat": 22.54546,
+	"course": 200,
+	"speed": 80
+	},{
+	"gps_time": 1318410927,
+	"lng": 113.91919,
+	"lat": 22.54546,
+	"course": 180,
+	"speed": 80}]
+}
+</pre>					
+					<p></p>
+					<p>
+					错误返回示例：
+</p><pre>{"ret":20007,"msg":"IMEI不存在{353419031939627}"}
+{"ret":20010,"msg":"该设备已过期{353419031939627}"}
+</pre>
+					<p></p>
+					<p>
+					特别说明：<br>
+					每次获取数据最多只能获取1000条，如果想回放很长一段时间的历史轨迹，需要不断的获取数据，每次获取1000条，然后以最后一条数据的定位时间作为起始时间再次请求获取数据，如果获取的数据少于1000条，表示这段时间内的gps数据已经全部获取完毕，不需要再发请求。
+					</p>
+			</div>
+		</div>
+		<div class="block" id="block-3.4.5">
+			<div class="hd"><h5>4.5【逆地理位置解析】</h5></div>
+			<div class="bd">
+				<p>
+					接口说明：<br>根据经纬度得到中文地址
+					</p>
+					<p>
+					URL：<br>http://api.gpsoo.net/1/tool/address/
+					</p>
+					<p>
+					HTTP请求方式：<br>GET
+					</p>
+					<p>
+					输入参数说明：<br>
+					（1）通用参数<br>
+	    		 	  	  参见：<a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.1">通用参数</a><br>
+					（2）私有参数
+					</p><table border="1">
+						<tbody><tr>
+							<th>参数名</th>
+							<th>参数类型</th>
+							<th>是否必需</th>
+							<th>默认值</th>
+							<th>描述</th>
+						</tr>
+						<tr>
+							<th>lng</th>
+							<td>number</td>
+							<td>是</td>
+							<td>无</td>
+							<td>经度</td>
+						</tr>
+						<tr>
+							<th>lat</th>
+							<td>number</td>
+							<td>是</td>
+							<td>无</td>
+							<td>纬度</td>
+						</tr>
+						<tr>
+							<th>lang</th>
+							<td>string</td>
+							<td>否</td>
+							<td>无</td>
+							<td>语言<br>
+								简体中文=zh-cn<br>
+								默认简体中文，目前仅支持简体中文
+							</td>
+						</tr>
+						<tr>
+							<th>map_type</th>
+							<td>string</td>
+							<td>否</td>
+							<td>无</td>
+							<td>用户根据上传的GPS经纬度校准，选用不同的map_type<br>
+								map_type=BAIDU经纬度参数经过百度校准过<br>
+								map_type =GOOGLE经纬度参数经过google校准过<br>
+								非BAIDU ，GOOGLE表示原始经纬度，未经任何校准
+							</td>
+						</tr>
+					</tbody></table>
+				<p></p>	
+				<p>
+				请求示例：
+				http://api.gpsoo.net/1/tool/address?lng=114.342155&amp;lat=30.682749&amp;access_token=0011045701369822736adb020814946df1ded1c8681d026d5c5
+                    &amp;account=testacc&amp;time=1366786321<br>
+				表示请求经度为114.342155，纬度为30.682749的地址 (经纬度是原始值)<br>
+				http://api.gpsoo.net/1/tool/address?lng=114.343088&amp;lat=30.682888&amp;access_token=0011045701369822736adb020814946df1ded1c8681d026d5c5
+                    &amp;account=testacc&amp;map_type=BAIDU&amp;time= 1366786321<br>
+				表示请求经度为114.343088，纬度为30.682888的地址 (经纬度不是原始值，该经纬度是经过了百度校准过的经纬度)<br>
+				http://api.gpsoo.net/1/tool/address?lng=114.343231&amp;lat=30.682345&amp;access_token=0011045701369822736adb020814946df1ded1c8681d026d5c5
+                    &amp;account=testacc&amp;map_type=BAIDU&amp;time= 1366786321<br>
+				表示请求经度为114.343231，纬度为30.682345的地址 (经纬度不是原始值，该经纬度是经过了GOOGLE校准过的经纬度)
+				</p>
+				<p>
+				返回参数说明：
+				</p><table border="1">
+					<tbody><tr>
+						<th>参数名</th>
+						<th>参数类型</th>
+						<th>描述</th>
+					</tr>
+					<tr>
+						<th>ret</th>
+						<td>uint</td>
+						<td>返回码<br>
+							0: 正确返回<br>
+							其它: 失败。<a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.5">错误码说明</a>
+						</td>
+					</tr>
+					<tr>
+						<th>msg</th>
+						<td>string</td>
+						<td>如果ret不为0，会有相应的错误信息提示</td>
+					</tr>
+					<tr>
+						<th>address</th>
+						<td>string</td>
+						<td>返回的地址信息</td>
+					</tr>
+				</tbody></table>
+				<p></p>
+				<p>
+				正确返回示例：<br>
+</p><pre>{
+"ret":0,
+"msg":"",
+"address":"湖北省武汉市堤边路.离新队约78米. "
+}
+</pre>
+				<p></p>
+				<p>
+				错误返回示例：<br>
+</p><pre>{"ret":20002,"msg":"缺失必选参数(lng) ,请参考API文档"}
+</pre>
+				<p></p>
+			</div>
+		</div>
+<div class="block" id="block-3.4.6">
+			<div class="hd"><h5>4.6【获取设备信息】</h5></div>
+			<div class="bd">
+				<p>
+					接口说明：<br>查询账号下所有设备的相关信息
+					</p>
+					<p>
+					URL：<br>http://api.gpsoo.net/1/account/devinfo/
+					</p>
+					<p>
+					HTTP请求方式：<br>GET/POST
+					</p>
+					<p>
+					输入参数说明：<br>
+					（1）通用参数<br>
+	    		 	  	  参见：<a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.1">通用参数</a><br>
+					（2）私有参数
+					</p><table border="1">
+						<tbody><tr>
+							<th>参数名</th>
+							<th>参数类型</th>
+							<th>是否必需</th>
+							<th>默认值</th>
+							<th>描述</th>
+						</tr>
+						<tr>
+							<th>target</th>
+							<td>string</td>
+							<td>是</td>
+							<td>无</td>
+							<td>要监控的账户(在汽车在线平台的账号)，目标账号名下最多只能有100个设备</td>
+						</tr>
+					</tbody></table>
+				<p></p>	
+				<p>
+				请求示例：
+				http://api.gpsoo.net/1/account/devinfo?target=test&amp;account=test&amp;access_token=200071015892101425870161325c151729a416478ac71fe7588b70609800010010014010
+                    &amp;time=1386655342
+				</p>
+				<p>
+				返回参数说明：
+				</p><table border="1">
+					<tbody><tr>
+						<th>参数名</th>
+						<th>参数类型</th>
+						<th>描述</th>
+					</tr>
+					<tr>
+						<th>ret</th>
+						<td>uint</td>
+						<td>返回码<br>
+							0: 正确返回<br>
+							其它: 失败。<a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.5">错误码说明</a>
+						</td>
+					</tr>
+					<tr>
+						<th>msg</th>
+						<td>string</td>
+						<td>如果ret不为0，会有相应的错误信息提示</td>
+					</tr>
+					<tr>
+						<th>imei</th>
+						<td>string</td>
+						<td>imei号</td>
+					</tr>
+					<tr>
+						<th>name</th>
+						<td>string</td>
+						<td>设备名称</td>
+					</tr>
+					<tr>
+						<th>number</th>
+						<td>string</td>
+						<td>车牌号</td>
+					</tr>
+					<tr>
+						<th>phone</th>
+						<td>string</td>
+						<td>设备电话号码</td>
+					</tr>
+					<tr>
+						<th>group_id</th>
+						<td>uint</td>
+						<td>分组id</td>
+					</tr>
+					<tr>
+						<th>group_name</th>
+						<td>string</td>
+						<td>分组名称</td>
+					</tr>
+					<tr>
+						<th>dev_type</th>
+						<td>string</td>
+						<td>设备类型</td>
+					</tr>
+					<tr>
+						<th>in_time</th>
+						<td>uint</td>
+						<td>开通时间</td>
+					</tr>
+					<tr>
+						<th>out_time</th>
+						<td>uint</td>
+						<td>到期时间</td>
+					</tr>
+					<tr>
+						<th>sudu</th>
+						<td>string</td>
+						<td>为-9表示未启用</td>
+					</tr>
+					<tr>
+						<th>efence_support</th>
+						<td>boolean</td>
+						<td>是否支持电子围栏</td>
+					</tr>
+					<tr>
+						<th>children</th>
+						<td>array</td>
+						<td>子客户数组</td>
+					</tr>
+					<tr>
+						<th>id</th>
+						<td>string</td>
+						<td>子客户ID标识</td>
+					</tr>
+					<tr>
+						<th>name</th>
+						<td>string</td>
+						<td>子客户登录名，可用于target传参，调用现有接口获取子客户相关信息</td>
+					</tr>
+					<tr>
+						<th>showname</th>
+						<td>string</td>
+						<td>子客户名称</td>
+					</tr>
+				</tbody></table>
+				<p></p>
+				<p>
+				正确返回示例：<br>
+</p><pre>{
+    "data": [
+       {
+            "imei": "684611121300041", 
+            "name": "goome-00041", 
+            "number": "", 
+            "phone": "", 
+            "group_id": 0, 
+            "group_name": "", 
+            "dev_type": "X9", 
+            "in_time": 1323705600, 
+            "out_time": 1862928000, 
+            "sudu": "0", 
+            "efence_support": true,
+        }
+    ], 
+    "children"：
+     [
+                {
+                    "id"   : “456789”,
+                    "name" : “wangtao888”,
+                    "showname" : “wangtao888”
+                 },
+                 {
+                    "id"   : “子客户ID”,
+                    "name" : “子客户登录名”,
+                    "showname" : “子客户名称”
+                 }
+     ],
+    "ret": 0, 
+    "msg": ""
+}
+</pre>
+				<p></p>
+				<p>
+				错误返回示例：<br>
+</p><pre>{"ret":20002,"msg":"缺失必选参数(target) ,请参考API文档"}
+</pre>
+				<p></p>
+			</div>
+		</div>
+<div class="block" id="block-3.4.7">
+			<div class="hd"><h5>4.7【黑名单判断】</h5></div>
+			<div class="bd">
+				<p>
+					接口说明：<br>查询是否为黑名单
+					</p>
+					<p>
+					URL：<br>http://api.gpsoo.net/1/tool/blacklist
+					</p>
+					<p>
+					HTTP请求方式：<br>GET/POST
+					</p>
+					<p>
+					输入参数说明：<br>
+					（1）通用参数<br>
+	    		 	  	  参见：<a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.1">通用参数</a><br>
+					（2）私有参数
+					</p><table border="1">
+						<tbody><tr>
+							<th>参数名</th>
+							<th>参数类型</th>
+							<th>是否必需</th>
+							<th>默认值</th>
+							<th>描述</th>
+						</tr>
+						<tr>
+							<th>cardno</th>
+							<td>string</td>
+							<td>否</td>
+							<td>无</td>
+							<td>身份证号查询</td>
+						</tr>
+						<tr>
+							<th>drive_cardno</th>
+							<td>string</td>
+							<td>否</td>
+							<td>无</td>
+							<td>驾照号</td>
+						</tr>
+					</tbody></table>
+				<p></p>	
+				<p>
+				请求示例：
+				http://api.gpsoo.net/1/tool/blacklist?target=test&amp;account=test&amp;access_token=200071015892101425870161325c151729a416478ac71fe7588b70609800010010014010
+                    &amp;time=1386655342&amp;cardno=42027377373788
+				</p>
+				<p>
+				返回参数说明：
+				</p><table border="1">
+					<tbody><tr>
+						<th>参数名</th>
+						<th>参数类型</th>
+						<th>描述</th>
+					</tr>
+					<tr>
+						<th>ret</th>
+						<td>uint</td>
+						<td>返回码<br>
+							0: 正确返回<br>
+							其它: 失败。<a href="http://www.gpsoo.net/open/v1.0/dataApi.html#block-3.5">错误码说明</a>
+						</td>
+					</tr>
+					<tr>
+						<th>data</th>
+						<td>bool</td>
+						<td>true为黑名单者，false不是</td>
+					</tr>
+				</tbody></table>
+				<p></p>
+				<p>
+				正确返回示例：<br>
+</p><pre>{
+    "data": true, 
+    "ret": 0, 
+    "msg": "" 
+}
+当access_type=inner，返回格式：
+{
+    "data": true, 
+    "success": true,
+    "errcode": 0,
+    "msg": "" 
+}
+</pre>
+				<p></p>
+				<p>
+				错误返回示例：<br>
+</p><pre>{"ret":20002, "msg":"缺失必选参数，请参考API文档"}
+当access_type=inner，返回格式：
+{"success":false, "errcode":20002, "msg":"缺失必选参数，请参考API文档"}
+</pre>
+				<p></p>
+			</div>
+		</div>
+		<div class="block" id="block-3.5">
+			<div class="hd"><h4>5 错误码说明</h4></div>
+			<div class="bd">
+				<p>
+				系统级错误代码：
+				</p><table border="1">
+					<tbody><tr>
+						<th>错误码</th>
+						<th>含义说明</th>
+					</tr>
+					<tr>
+						<th>10001</th>
+						<td>系统错误</td>
+					</tr>
+					<tr>
+						<th>10002</th>
+						<td>请求的接口不存在</td>
+					</tr>
+					<tr>
+						<th>10003</th>
+						<td>请求频率超过上限</td>
+					</tr>
+					<tr>
+						<th>10004</th>
+						<td>access_token不存在</td>
+					</tr>
+					<tr>
+						<th>10005</th>
+						<td>access_token错误</td>
+					</tr>
+					<tr>
+						<th>10006</th>
+						<td>access_token已过期,请重新获取</td>
+					</tr>
+				</tbody></table>
+				<p></p>
+				<p>
+				服务级错误代码：
+				</p><table border="1">	
+					<tbody><tr>
+						<th>错误码</th>
+						<th>含义说明</th>
+					</tr>
+					<tr>
+						<th>20001</th>
+						<td>账号或密码错误</td>
+					</tr>
+					<tr>
+						<th>20002</th>
+						<td>缺失必选参数(%s),请参考API文档</td>
+					</tr>
+					<tr>
+						<th>20003</th>
+						<td>参数(%s)值非法，%s,请参考API文档</td>
+					</tr>
+					<tr>
+						<th>20004</th>
+						<td>监控账号不存在</td>
+					</tr>
+					<tr>
+						<th>20005</th>
+						<td>无权查看该账号(%s)信息</td>
+					</tr>
+					<tr>
+						<th>20006</th>
+						<td>%s账号名下设备数量超过上限</td>
+					</tr>
+					<tr>
+						<th>20007</th>
+						<td>IMEI不存在(%s)</td>
+					</tr>
+					<tr>
+						<th>20008</th>
+						<td>无权查看该设备(%s)信息</td>
+					</tr>
+					<tr>
+						<th>20009</th>
+						<td>请求的设备数量超过上限</td>
+					</tr>
+					<tr>
+						<th>20010</th>
+						<td>该设备已过期(%s)</td>
+					</tr>
+					<tr>
+						<th>20011</th>
+						<td>地图类型错误，请参考API文档</td>
+					</tr>
+					<tr>
+						<th>20012</th>
+						<td>非法经纬度</td>
+					</tr>
+				</tbody></table>
+				<p></p>
+			</div>
+		</div>
+		<div class="block" id="block-3.6">
+			<div class="hd"><h4>6 访问限制说明</h4></div>
+		</div>
+		<div class="block" id="block-3.6.1">
+			<div class="hd"><h5>6.1 访问频率</h5></div>
+			<div class="bd">
+				<p>
+				一个服务器的访问频率不能超过 600次/分钟，如果需要更高的访问频率授权，请联系我们。
+			 	</p>
+			</div>
+		</div>
+		<div class="block" id="block-3.6.2">
+			<div class="hd"><h5>6.2 access_token的有效期</h5></div>
+			<div class="bd">
+				<p>
+				目前默认access_token 的有效期是2小时，如果需要更长的有效期，请联系我们。
+			 	</p>
+			</div>
+		</div>
+
+		<div class="block" id="block-3.7">
+			<div class="hd"><h4>7.名词解释</h4></div>
+		</div>
+		<div class="block" id="block-3.7.1">
+			<div class="hd"><h5>7.1位置数据的几个时间</h5></div>
+			<div class="bd">
+				<p>
+1. 定位时间(datetime): 终端设备上来的gps定位时间，是卫星时间<br>
+2. 系统时间(systime): 终端设备上来定位数据的时候，服务器的时间，即这条数据上来的时候的服务器时间<br>
+3. 心跳时间(heartTime):心跳时间，即终端设备上来心跳数据包的时间(是服务器时间)<br>
+4. 服务器时间(servertime):服务器向页面或终端回复数据时的当前服务器时间<br>
+补充：andriod等客户端请求设备的位置的数据的时候，会带下去一个serverTime的时间，这个是android客户端请求位置数据时，服务器的时间。即这次请求的时候服务器的时间。给android用来判断设备的运动状态用的
+			 	</p>
+			</div>
+		</div>
+		<div class="block" id="block-3.7.2">
+			<div class="hd"><h5>7.2终端设备的状态</h5></div>
+			<div class="bd">
+				<p>
+终端设备有 未上线，静止，运动，离线 4种状态<br>
+服务器时间:servertime,定位时间:datetime,心跳时间:heart_time,系统时间:sys_time<br>
+a:服务器时间-定位时间 b:服务器时间-心跳时间 c:服务器时间-系统时间<br>
+<strong>未上线</strong>: 速度为-9，且b 大于1500秒，判断为未上线。<br>
+<strong>离线</strong>: 如果b和c中的最小值大于1500秒(即重新搜网25分钟没有收到心跳)，就判断该设备处于离线状态。<br>
+<strong>静止</strong>: 如果a大于35秒(即连续俩个信号周期没有定位)就判断设备处于静止状态， 或者是速度小于某个指定值,以gt02为例,如果速度不大于10(静态漂移)则为静止。<br>
+<strong>运动</strong>: a &lt;=35秒，判定为运动，行驶中。
+			 	</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="ft">
+	<div class="footer">汽车在线 2013/03</div>
+</div>
+
+</body></html>
