@@ -25,6 +25,17 @@ public class Circle {
 		this.radius = 0d;
 	}
 	
+	/**
+	 * 构造函数
+	 * @param center 圆心坐标
+	 * @param radius 半径，单位m
+	 */
+	public Circle(Point center,double radius){
+		this.center = center;
+		this.radius = radius;
+	}
+	
+	
 	public Point getCenter() {
 		return center;
 	}

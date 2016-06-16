@@ -12,6 +12,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <httpclient.version>4.5.2</httpclient.version>
     <spring.version>4.1.7.RELEASE</spring.version>
     <quartz.version>2.2.2</quartz.version>
   </properties>
@@ -50,6 +51,11 @@
 	</dependency>
 	<!-- log dependency end -->
 	
+	<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    	<artifactId>httpclient</artifactId>
+    	<version>${httpclient.version}</version>
+	</dependency>
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-context</artifactId>

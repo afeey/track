@@ -22,6 +22,13 @@ public class Polyline {
 		this.points = new ArrayList<Point>();
 	}
 	
+	/**
+	 * 构造函数
+	 */
+	public Polyline(List<Point> points){
+		this.points = points;
+	}
+	
 	public List<Point> getPoints() {
 		return points;
 	}
