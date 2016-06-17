@@ -1,7 +1,6 @@
 package com.fbzj.track.service.impl;
 
 import java.io.IOException;
-import java.sql.Ref;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,9 +14,11 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.fbzj.track.enums.DeviceInfoEnum;
 import com.fbzj.track.enums.MapTypeEnum;
 import com.fbzj.track.exception.AccessTokenException;
 import com.fbzj.track.exception.ExpiredException;
+import com.fbzj.track.exception.NoPermissionException;
 import com.fbzj.track.model.Device;
 import com.fbzj.track.model.Token;
 import com.fbzj.track.model.Track;
@@ -68,7 +69,7 @@ public class DataApi {
 			}else if(ret =="20001"){
 				throw new AccessTokenException(msg);
 			}else if(ret == "10006 "){
-				throw new ExpiredException(msg);
+				throw new ExpiredException("令牌已过期");
 			}
 		
 		} catch (JsonProcessingException e) {
@@ -83,17 +84,66 @@ public class DataApi {
 	}
 
 	/**
-	 * 获取一个账户名下所有设备最新位置信息
-	 * token 访问令牌
-	 * account 经销商账号
-	 * target 平台账号
-	 * mapType 地图类型
+	 * 
+	 * 
+	 * account 
+	 * target 
+	 * mapType 
+	 * @throws NoPermissionException 
 	 * 
 	 * 
 	 */
-	public static List<Track> monitor(Token token, String account, String target, MapTypeEnum mapType) {
-		// TODO Auto-generated method stub
-		return null;
+	/**
+	 * 获取一个账户名下所有设备最新位置信息
+	 * @param token token 访问令牌
+	 * @param account 经销商账号
+	 * @param target 平台账号
+	 * @param mapType 地图类型
+	 * @return 返回轨迹列表
+	 * @throws NoPermissionException 没有权限异常
+	 */
+	public static List<Track> monitor(Token token, String account, String target, MapTypeEnum mapType) throws NoPermissionException {
+		List<Track> tracks = new ArrayList<Track>();
+		
+		String url = domain + "/1/account/monitor";
+		long time = System.currentTimeMillis() / 1000L;
+		
+		// 参数
+		List<NameValuePair> pairs = new ArrayList<NameValuePair>();
+		pairs.add(new BasicNameValuePair("access_token", token.getAccessToken()));
+		pairs.add(new BasicNameValuePair("account", account));
+		pairs.add(new BasicNameValuePair("target", target));
+		pairs.add(new BasicNameValuePair("map_type", "" + mapType.getValue()));
+		pairs.add(new BasicNameValuePair("time", "" + time));
+		
+		String json = HttpClientUtils.get(url, pairs, "UTF-8");
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		try {
+			JsonNode root = objectMapper.readTree(json);
+			String ret = root.get("ret").asText();
+			if(ret=="0"){
+				JsonNode data = root.get("data");
+				for (JsonNode node : data) {
+
+					Track track = new Track();
+					track.setImei(node.get("imei").asText());
+					//track.setDeviceInfo(DeviceInfoEnum.valueOf(node.get("device_info").asText()));
+					tracks.add(track);
+				}
+			}else if(ret =="20005"){
+				throw new NoPermissionException("没有权限");
+			}
+		
+		} catch (JsonProcessingException e) {
+			logger.error(e.getStackTrace().toString());
+		} catch (IOException e) {
+			logger.error(e.getStackTrace().toString());
+		}
+		
+		logger.debug("return json : {} ", json);
+		
+		return tracks;
 	}
 	
 	/**
