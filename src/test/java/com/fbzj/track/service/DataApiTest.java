@@ -5,8 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import com.fbzj.track.exception.AccessTokenException;
+import com.fbzj.track.exception.ExpiredException;
 import com.fbzj.track.model.Token;
-import com.fbzj.track.service.impl.DataApiImpl;
+import com.fbzj.track.service.impl.DataApi;
 
 public class DataApiTest {
 
@@ -15,7 +16,7 @@ public class DataApiTest {
 
 	@Test
 	public void testAccessToken() {
-		DataApi dataApi = new DataApiImpl();
+		DataApi dataApi = new DataApi();
 		Token token = null;
 		try {
 			token = dataApi.accessToken(account, pwd);
@@ -23,6 +24,9 @@ public class DataApiTest {
 			System.out.println("访问令牌：" + token.getAccessToken() + "  有效时间：" + token.getExpiresIn());
 		} catch (AccessTokenException e) {
 			assertEquals("账号或密码错误", e.getMessage());
+		} catch (ExpiredException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
