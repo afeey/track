@@ -13,7 +13,17 @@ public class Token {
 	/**
 	 * 有效期，单位秒
 	 */
-	private Integer expiresIn;
+	private int expiresIn;
+	
+	public Token(){
+		this.accessToken = "";
+		this.expiresIn = 0;
+	}
+	
+	public Token(String accessToken,int expiresIn ){
+		this.accessToken = accessToken;
+		this.expiresIn = expiresIn;
+	}
 
 	public String getAccessToken() {
 		return accessToken;
@@ -23,11 +33,11 @@ public class Token {
 		this.accessToken = accessToken;
 	}
 
-	public Integer getExpiresIn() {
+	public int getExpiresIn() {
 		return expiresIn;
 	}
 
-	public void setExpiresIn(Integer expiresIn) {
+	public void setExpiresIn(int expiresIn) {
 		this.expiresIn = expiresIn;
 	}
 

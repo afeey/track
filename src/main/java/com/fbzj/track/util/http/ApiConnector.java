@@ -27,8 +27,6 @@ import org.apache.http.config.RegistryBuilder;
 import org.apache.http.config.SocketConfig;
 import org.apache.http.conn.socket.ConnectionSocketFactory;
 import org.apache.http.conn.socket.PlainConnectionSocketFactory;
-import org.apache.http.entity.ContentType;
-import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.DefaultConnectionReuseStrategy;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.DefaultConnectionKeepAliveStrategy;
@@ -36,7 +34,6 @@ import org.apache.http.impl.client.DefaultHttpRequestRetryHandler;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.message.BasicHeader;
-import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,7 +53,6 @@ public final class ApiConnector {
 
 	/**
 	 * 最大连接数
-	 *
 	 */
 	public final static int MAX_TOTAL_CONNECTIONS = 800;
 	/**
@@ -99,6 +95,13 @@ public final class ApiConnector {
 				.setKeepAliveStrategy(DefaultConnectionKeepAliveStrategy.INSTANCE).build();
 	}
 
+	/**
+	 * post请求
+	 * @param url url
+	 * @param pairs 名称值对列表
+	 * @param encoding 编码
+	 * @return 返回字符串
+	 */
 	public static String post(String url, List<NameValuePair> pairs, String encoding) {
 		HttpPost post = new HttpPost(url.trim());
 		try {
@@ -112,16 +115,16 @@ public final class ApiConnector {
 				post.setEntity(new UrlEncodedFormEntity(pairs, encoding));
 			}
 
-			logger.info("[HttpUtils Post] begin invoke url:{} , params:{}", url, pairs);
+			logger.debug("[HttpUtils Post] begin invoke url:{} , params:{}", url, pairs);
 			long s1 = System.currentTimeMillis();
 			CloseableHttpResponse response = httpclient.execute(post);
 			long s2 = System.currentTimeMillis() - s1;
+			
 			try {
 				int statusCode = response.getStatusLine().getStatusCode();
 				if (statusCode != HttpStatus.SC_OK) {
 					post.abort();
-					logger.error("[HttpUtils Post] error, url : {}  , params : {},  status :{}", url, pairs,
-							statusCode);
+					logger.error("[HttpUtils Post] error, url : {}  , params : {},  status :{}", url, pairs, statusCode);
 					return "";
 				}
 
@@ -129,8 +132,7 @@ public final class ApiConnector {
 				try {
 					if (entity != null) {
 						String str = EntityUtils.toString(entity, encoding);
-						logger.info(
-								"[HttpUtils Post]Debug response, url : {}  , params : {}, response string : {} ,time : {}",
+						logger.debug("[HttpUtils Post]Debug response, url : {}  , params : {}, response string : {} ,time : {}",
 								url, pairs, str, s2);
 						return str;
 					}
@@ -145,14 +147,19 @@ public final class ApiConnector {
 				}
 			}
 		} catch (Exception e) {
-			logger.error("[HttpUtils Post] error, url : {}  , params : {}, response string : {} ,error : {}", url,
-					pairs, "", e.getMessage(), e);
+			logger.error("[HttpUtils Post] error, url : {}  , params : {}, response string : {} ,error : {}", url, pairs, "", e.getMessage(), e);
 		} finally {
 			post.releaseConnection();
 		}
 		return "";
 	}
 
+	/**
+	 * 
+	 * @param url
+	 * @param pairs
+	 * @return
+	 */
 	public static String post(String url, List<NameValuePair> pairs) {
 		HttpPost post = new HttpPost(url.trim());
 		try {
@@ -311,7 +318,7 @@ public final class ApiConnector {
 			}
 		}
 
-		logger.info("[HttpUtils Get] begin invoke:{}", url.toString());
+		logger.debug("[HttpUtils Get] begin invoke:{}", url.toString());
 		HttpGet get = new HttpGet(url.toString());
 		get.setConfig(requestConfig);
 		get.addHeader(DEFAULT_HEADER);
@@ -345,7 +352,7 @@ public final class ApiConnector {
 					response.close();
 				}
 			}
-			logger.info("[HttpUtils Get]Debug url:{} , response string :{},time={}", url.toString(), responseString,
+			logger.debug("[HttpUtils Get]Debug url:{} , response string :{},time={}", url.toString(), responseString,
 					s2 - s1);
 		} catch (Exception e) {
 			logger.error("[HttpUtils PostJson] error, url : {}  , params : {}, response string : {} ,error : {}", url,
@@ -355,66 +362,5 @@ public final class ApiConnector {
 		}
 		return responseString;
 	}
-
-	/**
-	 * HTTPS请求，默认超时为5S
-	 * 
-	 * @param url
-	 * @param params
-	 * @return
-	 */
-	public static String connectPostHttps(String url, Map<String, String> params) {
-
-		String responseContent = null;
-
-		HttpPost httpsPost = new HttpPost(url);
-		try {
-			RequestConfig requestConfig = RequestConfig.custom().setSocketTimeout(CONNECT_TIMEOUT)
-					.setConnectTimeout(CONNECT_TIMEOUT).setConnectionRequestTimeout(CONNECT_TIMEOUT).build();
-
-			List<NameValuePair> formParams = new ArrayList<NameValuePair>();
-			httpsPost.setEntity(new UrlEncodedFormEntity(formParams, Consts.UTF_8));
-			httpsPost.setConfig(requestConfig);
-			httpsPost.addHeader(DEFAULT_HEADER);
-
-			// 绑定到请求 Entry
-			for (Map.Entry<String, String> entry : params.entrySet()) {
-				formParams.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
-			}
-			CloseableHttpResponse response = httpclient.execute(httpsPost);
-			try {
-				int statusCode = response.getStatusLine().getStatusCode();
-				if (statusCode != HttpStatus.SC_OK) {
-					httpsPost.abort();
-					logger.error("[HttpUtils Security] error, url : {}  , params : {},  status :{}", url, params,
-							statusCode);
-					return "";
-				}
-				// 执行POST请求
-				HttpEntity entity = response.getEntity(); // 获取响应实体
-				try {
-					if (null != entity) {
-						responseContent = EntityUtils.toString(entity, Consts.UTF_8);
-					}
-				} finally {
-					if (entity != null) {
-						entity.getContent().close();
-					}
-				}
-			} finally {
-				if (response != null) {
-					response.close();
-				}
-			}
-			logger.info("requestURI : " + httpsPost.getURI() + ", responseContent: " + responseContent);
-		} catch (ClientProtocolException e) {
-			logger.error("ClientProtocolException", e);
-		} catch (IOException e) {
-			logger.error("IOException", e);
-		} finally {
-			httpsPost.releaseConnection();
-		}
-		return responseContent;
-
-	}
+	
 }

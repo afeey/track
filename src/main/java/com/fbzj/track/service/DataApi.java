@@ -6,6 +6,8 @@ import com.fbzj.track.model.Track;
 
 import java.util.List;
 import com.fbzj.track.enums.MapTypeEnum;
+import com.fbzj.track.exception.AccessTokenException;
+
 import java.util.Date;
 
 /**
@@ -17,8 +19,9 @@ public interface DataApi {
 	 * 获取一个访问令牌
 	 * account  经销商账号
 	 * password 密码
+	 * @throws AccessTokenException 访问令牌异常
 	 */
-	Token accessToken(String account, String password);
+	Token accessToken(String account, String password) throws AccessTokenException;
 
 	/**
 	 * 获取一个账户名下所有设备最新位置信息
@@ -69,7 +72,7 @@ public interface DataApi {
 	 * account 经销商账号
 	 * target 平台账号
 	 */
-	public List<Device> devinfo(Token token, String account, String target);
+	List<Device> devinfo(Token token, String account, String target);
 
 	/**
 	 * 查询是否为黑名单
@@ -78,6 +81,6 @@ public interface DataApi {
 	 * cardNo 身份证号查询
 	 * driveCardno 驾照号
 	 */
-	public Boolean blacklist(Token token, String account, String cardNo, String driveCardno);
+	Boolean blacklist(Token token, String account, String cardNo, String driveCardno);
 
 }
