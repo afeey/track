@@ -16,6 +16,16 @@ public class Account {
 	private String name;
 
 	private String password;
+	
+	/**
+	 * 构造函数
+	 * @param name 账号名
+	 * @param password 密码
+	 */
+	public Account(String name, String password) {
+		this.name = name;
+		this.password = password;
+	}
 
 	/**
 	 * 显示名

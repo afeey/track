@@ -63,7 +63,7 @@ public class HttpClientUtils {
 			url = sb.toString();
 		}
 
-		logger.debug("[HttpUtils Get] begin invoke:" + url.toString());
+		logger.debug("[HttpUtils Get] begin invoke : " + url.toString());
 		HttpGet get = new HttpGet(url.toString());
 
 		try {
@@ -94,7 +94,7 @@ public class HttpClientUtils {
 					}
 				}
 			} catch (Exception e) {
-				logger.error("[HttpUtils Get]get response error, url:{}", url.toString(), e);
+				logger.error("[HttpUtils Get] get response error, url:{}", url.toString(), e);
 				return responseString;
 			} finally {
 				if (response != null) {
@@ -110,7 +110,6 @@ public class HttpClientUtils {
 		return responseString;
 	}
 
-	
 	/**
 	 * POST请求
 	 * @param url url
@@ -130,7 +129,7 @@ public class HttpClientUtils {
 			}
 
 			// 执行请求
-			logger.debug("[HttpUtils Post] begin invoke url:{} , params:{}", url, pairs);
+			logger.debug("[HttpUtils Post] begin invoke url : {} , params:{}", url, pairs);
 			long s1 = System.currentTimeMillis();
 			CloseableHttpResponse response = httpclient.execute(post);
 			long s2 = System.currentTimeMillis() - s1;

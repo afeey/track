@@ -1,17 +1,17 @@
 package com.fbzj.track.exception;
 
 /**
- * 过期异常
+ * 访问异常
  * 
  * @author afeey
  *
  */
-public class ExpiredException extends ApiException {
+public class AccessException extends ApiException {
 
 	/**
 	 * serialVersionUID
 	 */
-	private static final long serialVersionUID = 8382175360299473399L;
+	private static final long serialVersionUID = 7489336279278502382L;
 
 	/**
 	 * 构造函数
@@ -21,7 +21,7 @@ public class ExpiredException extends ApiException {
 	 * @param message
 	 *            消息内容
 	 */
-	public ExpiredException(int errorCode, String message) {
+	public AccessException(int errorCode, String message) {
 		super(errorCode, message);
 	}
 }

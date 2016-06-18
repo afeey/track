@@ -1,5 +1,7 @@
 package com.fbzj.track.model;
 
+import java.util.Date;
+
 /**
  * 令牌
  */
@@ -15,14 +17,21 @@ public class Token {
 	 */
 	private int expiresIn;
 	
+	/**
+	 * 创建时间
+	 */
+	private Date time;
+
 	public Token(){
 		this.accessToken = "";
 		this.expiresIn = 0;
+		this.time = new Date();
 	}
 	
 	public Token(String accessToken,int expiresIn ){
 		this.accessToken = accessToken;
 		this.expiresIn = expiresIn;
+		this.time = new Date();
 	}
 
 	public String getAccessToken() {
@@ -41,4 +50,11 @@ public class Token {
 		this.expiresIn = expiresIn;
 	}
 
+	public Date getTime() {
+		return time;
+	}
+
+	public void setTime(Date time) {
+		this.time = time;
+	}
 }

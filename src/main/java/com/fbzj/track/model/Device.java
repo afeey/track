@@ -1,5 +1,7 @@
 package com.fbzj.track.model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -53,14 +55,38 @@ public class Device {
 	private Date outTime;
 
 	/**
-	 * 为-9表示未启用
+	 * 速度， 为-9表示未启用
 	 */
-	private String sudu;
+	private String speed;
 
 	/**
 	 * 是否支持电子围栏
 	 */
 	private Boolean efenceSupport;
+
+	/**
+	 * 构造函数
+	 */
+	public Device() {
+		Date date = null;
+		try {
+			date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("1970-01-01 00:00:00");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		this.imei = "";
+		this.name = "";
+		this.number = "";
+		this.phone = "";
+		this.groupId = 0;
+		this.groupName = "";
+		this.devType = "";
+		this.inTime = date;
+		this.outTime = date;
+		this.speed = "";
+		this.efenceSupport = false;
+	}
 
 	public String getImei() {
 		return imei;
@@ -134,12 +160,12 @@ public class Device {
 		this.outTime = outTime;
 	}
 
-	public String getSudu() {
-		return sudu;
+	public String getSpeed() {
+		return speed;
 	}
 
-	public void setSudu(String sudu) {
-		this.sudu = sudu;
+	public void setSpeed(String speed) {
+		this.speed = speed;
 	}
 
 	public Boolean getEfenceSupport() {

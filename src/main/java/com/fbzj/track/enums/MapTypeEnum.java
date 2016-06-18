@@ -15,7 +15,7 @@ public enum MapTypeEnum {
 	/**
 	 * 百度坐标系
 	 */
-	Baidu("Baidu"),
+	Baidu("BAIDU"),
 
 	/**
 	 * google坐标系

@@ -15,7 +15,6 @@
 		<jackson.version>1.9.13</jackson.version>
 		<httpclient.version>4.5.2</httpclient.version>
 		<spring.version>4.1.7.RELEASE</spring.version>
-		<quartz.version>2.2.2</quartz.version>
 	</properties>
 
 	<dependencies>
@@ -71,11 +70,6 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.quartz-scheduler</groupId>
-			<artifactId>quartz</artifactId>
-			<version>${quartz.version}</version>
 		</dependency>
 	</dependencies>
 </project>

@@ -1,6 +1,9 @@
 package com.fbzj.track.model;
 
 import com.fbzj.track.enums.DeviceInfoEnum;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -63,9 +66,45 @@ public class Track {
 	private float speed;
 
 	/**
-	 * ACC等信息 (如果设备过期，值为空字符串)
+	 * 无说明
 	 */
-	private String status;
+	private String acc;
+	
+	/**
+	 * 无说明
+	 */
+	private int accSeconds;
+
+	/**
+	 * 无说明
+	 */
+	private int seconds;
+	
+	/**
+	 * 构造函数
+	 */
+	public Track(){
+		Date date = null;
+		try {
+			date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("1970-01-01 00:00:00");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		this.imei ="";
+		this.deviceInfo = DeviceInfoEnum.Offline;
+		this.gpsTime = date;
+		this.sysTime = date;
+		this.heartTime = date;
+		this.serverTime = date;
+		this.lng = 0d;
+		this.lat = 0d;
+		this.course = 0;
+		this.speed = 0;
+		this.acc = "";
+		this.accSeconds = 0;
+		this.seconds = 0;
+	}
 
 	public String getImei() {
 		return imei;
@@ -147,12 +186,28 @@ public class Track {
 		this.speed = speed;
 	}
 
-	public String getStatus() {
-		return status;
+	public String getAcc() {
+		return acc;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setAcc(String acc) {
+		this.acc = acc;
+	}
+
+	public int getAccSeconds() {
+		return accSeconds;
+	}
+
+	public void setAccSeconds(int accSeconds) {
+		this.accSeconds = accSeconds;
+	}
+
+	public int getSeconds() {
+		return seconds;
+	}
+
+	public void setSeconds(int seconds) {
+		this.seconds = seconds;
 	}
 
 }
