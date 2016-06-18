@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class SyncJob {
-	private static fi
 	
 	@Scheduled(cron = "0/1 * * * * ?")
     public void syncData() {  
