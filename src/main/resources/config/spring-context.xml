@@ -20,8 +20,13 @@
 		</property>
 	</bean>
 	
-	<task:executor id="executor" pool-size="5" />
-    <task:scheduler id="scheduler" pool-size="5" />
+	<bean id="dataService" class="com.fbzj.track.service.impl.DataServiceImpl">
+		<constructor-arg name="ac" value="${gm.account}"/>
+		<constructor-arg name="pwd" value="${gm.password}"/>
+	</bean>
+	
+	<task:executor id="executor" pool-size="1" />
+    <task:scheduler id="scheduler" pool-size="1" />
     <task:annotation-driven executor="executor" scheduler="scheduler" />
     
 </beans>

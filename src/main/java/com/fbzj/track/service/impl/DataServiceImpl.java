@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.fbzj.track.enums.MapTypeEnum;
@@ -16,8 +18,15 @@ import com.fbzj.track.model.Token;
 import com.fbzj.track.model.Track;
 import com.fbzj.track.service.DataService;
 
+/**
+ * 数据服务实现类
+ * @author afeey
+ *
+ */
 @Service
 public class DataServiceImpl implements DataService {
+	
+	private static final Logger logger = LoggerFactory.getLogger(DataServiceImpl.class);
 
 	private Account account; // 账号
 	private Token token; // 令牌
@@ -43,6 +52,7 @@ public class DataServiceImpl implements DataService {
 			throw new Exception("未设置account");
 		}
 		token = DataApi.accessToken(account.getName(), account.getPassword());
+		logger.info("request accessToken");
 	}
 
 	/* (non-Javadoc)

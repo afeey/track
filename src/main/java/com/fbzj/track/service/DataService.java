@@ -7,6 +7,11 @@ import com.fbzj.track.enums.MapTypeEnum;
 import com.fbzj.track.model.Device;
 import com.fbzj.track.model.Track;
 
+/**
+ * 数据服务接口
+ * @author afeey
+ *
+ */
 public interface DataService {
 
 	/**
